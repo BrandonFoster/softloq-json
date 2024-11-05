@@ -2,6 +2,9 @@
 #define SOFTLOQ_JSON_ELEMENT_HPP
 
 #include <string>
+#include <memory>
+#include <vector>
+#include <unordered_map>
 #include <softloq-json/definitions.hpp>
 
 namespace softloq::json {
@@ -17,12 +20,12 @@ public:
     template <class ELEMENT_TYPE> ELEMENT_TYPE* const as() { return dynamic_cast<ELEMENT_TYPE*>(this); }
 };
 
-class SOFTLOQ_JSON_API Object: public Element {
+class SOFTLOQ_JSON_API Object: public Element, public std::unordered_map<std::string, std::unique_ptr<Element>> {
 public:
     inline const ElementType getElementType() const override { return ElementType::Object; }
 };
 
-class SOFTLOQ_JSON_API Array: public Element {
+class SOFTLOQ_JSON_API Array: public Element, public std::vector<std::unique_ptr<Element>> {
 public:
     inline const ElementType getElementType() const override { return ElementType::Array; }
 };
