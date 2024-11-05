@@ -1,0 +1,19 @@
+{
+    "name" : "softloq-json",
+    "type" : "library",
+    "c++" : {
+      "build-command" : "",
+      "version" : "23",
+      "includes" : ["api/c++/include"],
+      "srcs" : ["api/c++/src/**.cpp"],
+      "excludes" : [],
+      "precompile" : "api/c++/include/softloq-json/precompile.hpp",
+      "export-macro" : "SOFTLOQ_JSON_BUILD_API",
+      "import-macro" : "SOFTLOQ_JSON_USE_API",
+      "static-macro" : "SOFTLOQ_JSON_NO_API",
+      "link-directories" : [],
+      "gcc or msvc" : {
+        "library-type" : "shared"
+      }
+    }
+  }
