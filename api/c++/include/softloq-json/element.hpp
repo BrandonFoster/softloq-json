@@ -30,16 +30,43 @@ public:
 class SOFTLOQ_JSON_API String: public Element {
 public:
     inline const ElementType getElementType() const override { return ElementType::String; }
+
+    String();
+    String(const std::string& value);
+
+    inline void setString(const std::string& value) { this->value = value; }
+    inline const std::string& getString() const { return value; }
+
+private:
+    std::string value;
 };
 
 class SOFTLOQ_JSON_API Number: public Element {
 public:
     inline const ElementType getElementType() const override { return ElementType::Number; }
+
+    Number();
+    Number(const float value);
+
+    inline void setNumber(const float value) { this->value = value; }
+    inline constexpr float getNumber() const { return value; }
+
+private:
+    float value;
 };
 
 class SOFTLOQ_JSON_API Bool: public Element {
 public:
     inline const ElementType getElementType() const override { return ElementType::Bool; }
+
+    Bool();
+    Bool(const bool value);
+
+    inline void setBool(const bool value) { this->value = value; }
+    inline constexpr bool getBool() const { return value; }
+
+private:
+    bool value;
 };
 
 class SOFTLOQ_JSON_API Null: public Element{
