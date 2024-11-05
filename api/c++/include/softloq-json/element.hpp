@@ -23,20 +23,23 @@ public:
 class SOFTLOQ_JSON_API Object: public Element, public std::unordered_map<std::string, std::unique_ptr<Element>> {
 public:
     inline const ElementType getElementType() const override { return ElementType::Object; }
+    const std::string toString() const override;
 };
 
 class SOFTLOQ_JSON_API Array: public Element, public std::vector<std::unique_ptr<Element>> {
 public:
     inline const ElementType getElementType() const override { return ElementType::Array; }
+    const std::string toString() const override;
 };
 
 class SOFTLOQ_JSON_API String: public Element {
 public:
     inline const ElementType getElementType() const override { return ElementType::String; }
-
+    inline const std::string toString() const override { return std::string("\"") + value + '"'; }
+    
     String();
     String(const std::string& value);
-
+    
     inline void setString(const std::string& value) { this->value = value; }
     inline const std::string& getString() const { return value; }
 
@@ -47,6 +50,7 @@ private:
 class SOFTLOQ_JSON_API Number: public Element {
 public:
     inline const ElementType getElementType() const override { return ElementType::Number; }
+    inline const std::string toString() const override { return std::to_string(value); }
 
     Number();
     Number(const float value);
@@ -61,6 +65,7 @@ private:
 class SOFTLOQ_JSON_API Bool: public Element {
 public:
     inline const ElementType getElementType() const override { return ElementType::Bool; }
+    inline const std::string toString() const override { return value ? "true" : "false"; }
 
     Bool();
     Bool(const bool value);
@@ -75,6 +80,7 @@ private:
 class SOFTLOQ_JSON_API Null: public Element{
 public:
     inline const ElementType getElementType() const override { return ElementType::Null; }
+    inline const std::string toString() const override { return "null"; }
 };
 
 } // namespace softloq::json
