@@ -1,7 +1,6 @@
 #ifndef SOFTLOQ_JSON_ENCODER_HPP
 #define SOFTLOQ_JSON_ENCODER_HPP
 
-#include <string>
 #include <softloq-json/element.hpp>
 
 namespace softloq::json {
