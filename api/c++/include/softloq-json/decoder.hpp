@@ -24,11 +24,12 @@ private:
     const bool parseElements(std::string_view& json_segment, std::unique_ptr<Element>& json_array);
     const bool parseElement(std::string_view& json_segment, std::unique_ptr<Element>& json_element);
     const bool parseString(std::string_view& json_segment, std::unique_ptr<Element>& json_string);
-    const bool parseCharacters(std::string_view& json_segment, std::string& json_characters);
+    const bool parseStringCharacters(std::string_view& json_segment, std::string& json_characters);
+    const bool parseStringEscape(std::string_view& json_segment, std::string& json_characters);
     const bool parseNumber(std::string_view& json_segment, std::unique_ptr<Element>& json_number);
     const bool parseBool(std::string_view& json_segment, std::unique_ptr<Element>& json_bool);
     const bool parseNull(std::string_view& json_segment, std::unique_ptr<Element>& json_null);
-    void       parseWS(std::string_view& json_segment);
+    const bool parseWS(std::string_view& json_segment);
 };
 
 } // namespace softloq::json
