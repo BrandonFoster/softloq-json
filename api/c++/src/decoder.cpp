@@ -1,5 +1,6 @@
 #include <softloq-json/precompile.hpp>
 #include <softloq-json/decoder.hpp>
+#include <softloq-common/character.hpp>
 
 namespace softloq::json {
 
